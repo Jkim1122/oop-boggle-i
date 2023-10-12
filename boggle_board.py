@@ -19,11 +19,23 @@ class BoggleBoard:
       new_board += new_line+'\n'
     self.board = new_board
 
-boggle_board = BoggleBoard()
+class Dice:
+  def __init__(self):
+    self.sides = [
+            chr(random.randint(ord('A'), ord('Z'))),
+            chr(random.randint(ord('A'), ord('Z'))),
+            chr(random.randint(ord('A'), ord('Z'))),
+            chr(random.randint(ord('A'), ord('Z'))),
+            chr(random.randint(ord('A'), ord('Z'))),
+            chr(random.randint(ord('A'), ord('Z')))
+            ]
+  def __str__(self):
+    return f"1:{self.sides[0]}, 2:{self.sides[1]}, 3:{self.sides[2]}, 4:{self.sides[3]}, 5:{self.sides[4]}, 6:{self.sides[5]}"
 
-print(boggle_board)
-boggle_board.shake()
-print(boggle_board)
+  def roll(self):
+    return self.sides[random.randint(0, 5)]
+
+
 # welcome_message = """
 # ----  WELCOME  ----
 # 1. Start New Game

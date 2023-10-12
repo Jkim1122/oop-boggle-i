@@ -1,24 +1,6 @@
 import random
 randomUpperLetter = chr(random.randint(ord('A'), ord('Z')))
 
-class BoggleBoard:
-  def __init__(self):
-    self.board = "____\n____\n____\n____\n"
-
-  def __str__(self):
-    return self.board
-  
-  def shake(self):
-    new_board = ""
-    lines = 4
-    while lines > 0:
-      new_line = ""
-      while len(new_line) < 4:
-        new_line += chr(random.randint(ord('A'), ord('Z')))
-      lines -= 1
-      new_board += new_line+'\n'
-    self.board = new_board
-
 class Dice:
   def __init__(self):
     self.sides = [
@@ -35,6 +17,41 @@ class Dice:
   def roll(self):
     return self.sides[random.randint(0, 5)]
 
+class Line(Dice):
+  def __init__(self):
+    self.die1 = Dice()
+    self.die2 = Dice()
+    self.die3 = Dice()
+    self.die4 = Dice() 
+
+    def roll(self):
+      return self.die1.roll(), self.die2.roll(), self.die3.roll(), self.die4.roll(),
+
+liner = Line()
+print(liner.roll()) 
+
+class BoggleBoard:
+  def __init__(self):
+    self.board = "____\n____\n____\n____\n"
+    self.line1 = [die1=Dice(),die2 = Dice(), die3 =Dice(), die4 = Dice()]
+           
+
+  def __str__(self):
+    return self.board
+  
+  def create_dice(self):
+    
+  
+  def shake(self):
+    new_board = []
+    lines = 4
+    while lines > 0:
+      new_line = ""
+      while len(new_line) < 4:
+        new_line += chr(random.randint(ord('A'), ord('Z')))
+      lines -= 1
+      new_board += new_line+'\n'
+    self.board = new_board
 
 # welcome_message = """
 # ----  WELCOME  ----
